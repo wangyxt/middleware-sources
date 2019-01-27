@@ -1,0 +1,218 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.yonyou.cloud.middleware</groupId>
+  <artifactId>middleware</artifactId>
+  <version>5.1.1-SNAPSHOT</version>
+  
+  <dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.yonyou.cloud.middleware</groupId>
+				<artifactId>ms-dependencies</artifactId>
+				<version>5.1.1-SNAPSHOT</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.7.25</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<!-- 加入circuitbreaker -->
+		<dependency>
+			<groupId>com.yonyou.cloud.middleware</groupId>
+			<artifactId>circuitbreaker-public</artifactId>
+			<version>5.1.1-SNAPSHOT</version>
+			<classifier>sources</classifier>
+		</dependency>
+
+		<!-- 加入sentienl -->
+		<dependency>
+			<groupId>com.yonyou.cloud.middleware</groupId>
+			<artifactId>sentinel-public</artifactId>
+			<!-- <scope>provided</scope> -->
+			<version>5.1.1-SNAPSHOT</version>
+			<classifier>sources</classifier>
+		</dependency>
+		
+		<!-- 加入yyeye -->
+		<dependency>
+			<groupId>com.yonyou.cloud.middleware</groupId>
+			<artifactId>yyeye-public</artifactId>
+			<!-- <scope>provided</scope> -->
+			<version>5.1.1-SNAPSHOT</version>
+			<classifier>sources</classifier>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.yonyou.cloud.middleware</groupId>
+			<artifactId>ms-monitor-public</artifactId>
+			<!-- <scope>provided</scope> -->
+			<version>5.1.1-SNAPSHOT</version>
+			<classifier>sources</classifier>
+		</dependency>
+
+		<!-- 加入嵌入版配置中心 -->
+		<dependency>
+			<groupId>com.yonyou.cloud.middleware</groupId>
+			<artifactId>proteus-embed-sdk-public</artifactId>
+			<version>5.1.1-SNAPSHOT</version>
+			<classifier>sources</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>com.yonyou.cloud.middleware</groupId>
+			<artifactId>iris-public</artifactId>
+			<version>5.1.1-SNAPSHOT</version>
+			<classifier>sources</classifier>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.yonyou.cloud.middleware</groupId>
+			<artifactId>helix-public</artifactId>
+			<version>5.1.1-SNAPSHOT</version>
+			<classifier>sources</classifier>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.yonyou.cloud.middleware</groupId>
+			<artifactId>helix-plugin-public</artifactId>
+			<version>5.1.1-SNAPSHOT</version>
+			<classifier>sources</classifier>
+		</dependency>
+	</dependencies>
+	
+	<build>
+	<!-- <finalName>middleware-5.1.1-SNAPSHOT-sources</finalName> -->
+		<plugins>
+		
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<version>2.4</version>
+			<executions>
+				<execution>
+					<configuration>
+						<appendAssemblyId>false</appendAssemblyId>
+						<finalName>middleware-5.1.1-SNAPSHOT-sources</finalName>
+						<descriptors>
+							<descriptor>src/main/java/assembly/assembly.xml</descriptor>
+						</descriptors>
+					</configuration>
+					<id>middleware-packag-parent</id>
+					<phase>package</phase>
+					<goals>
+						<goal>single</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+		
+		
+		
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<index>false</index>
+						<compress>false</compress>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<configuration>
+							<target>
+								<property name="compile_classpath" refid="maven.compile.classpath" />
+								<property name="runtime_classpath" refid="maven.runtime.classpath" />
+								<property name="test_classpath" refid="maven.test.classpath" />
+								<property name="plugin_classpath" refid="maven.plugin.classpath" />
+
+								<echo message="compile classpath: ${compile_classpath}" />
+								<echo message="runtime classpath: ${runtime_classpath}" />
+								<echo message="test classpath:    ${test_classpath}" />
+								<echo message="plugin classpath:  ${plugin_classpath}" />
+								<echo>basedir ${basedir} </echo>
+								<typedef name="bergpack" classname="com.yonyou.cloud.pack.Berg"
+									classpath="${basedir}/libs/bigpack-0.0.1-SNAPSHOT.jar" />
+								<bergpack prjHome="${basedir}" classPath="${compile_classpath}" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-antrun-plugin
+										</artifactId>
+										<versionRange>
+											[1.8,)
+										</versionRange>
+										<goals>
+											<goal>run</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>YonyouCloud-Snapshot</id>
+			<name>YonyouCloud-Snapshot</name>
+			<url>http://maven.yonyou.com/nexus/content/repositories/YonyouCloud-Snapshot/</url>
+		</snapshotRepository>
+		<repository>
+			<id>YonyouCloud-Release</id>
+			<name>YonyouCloud-Release</name>
+			<url>http://maven.yonyou.com/nexus/content/repositories/YonyouCloud-Release/</url>
+		</repository>
+	</distributionManagement>
+</project>
