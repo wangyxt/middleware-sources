@@ -87,33 +87,8 @@
 	</dependencies>
 	
 	<build>
-	<!-- <finalName>middleware-5.1.1-SNAPSHOT-sources</finalName> -->
+	<finalName>middleware-5.1.1-SNAPSHOT-sources</finalName>
 		<plugins>
-		
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-assembly-plugin</artifactId>
-			<version>2.4</version>
-			<executions>
-				<execution>
-					<configuration>
-						<appendAssemblyId>false</appendAssemblyId>
-						<finalName>middleware-5.1.1-SNAPSHOT-sources</finalName>
-						<descriptors>
-							<descriptor>src/main/java/assembly/assembly.xml</descriptor>
-						</descriptors>
-					</configuration>
-					<id>middleware-packag-parent</id>
-					<phase>package</phase>
-					<goals>
-						<goal>single</goal>
-					</goals>
-				</execution>
-			</executions>
-		</plugin>
-		
-		
-		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
