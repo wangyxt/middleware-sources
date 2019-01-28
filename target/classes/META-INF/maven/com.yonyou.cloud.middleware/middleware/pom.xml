@@ -2,14 +2,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.yonyou.cloud.middleware</groupId>
   <artifactId>middleware</artifactId>
-  <version>5.1.1-SNAPSHOT</version>
+  <version>5.1.1-RELEASE</version>
   
   <dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>com.yonyou.cloud.middleware</groupId>
 				<artifactId>ms-dependencies</artifactId>
-				<version>5.1.1-SNAPSHOT</version>
+				<version>5.1.1-RELEASE</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -21,73 +21,73 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<dependencies>
-		<!-- 加入circuitbreaker -->
+	<!-- <dependencies>
+		加入circuitbreaker
 		<dependency>
 			<groupId>com.yonyou.cloud.middleware</groupId>
 			<artifactId>circuitbreaker-public</artifactId>
-			<version>5.1.1-SNAPSHOT</version>
+			<version>5.1.1-RELEASE</version>
 			<classifier>sources</classifier>
 		</dependency>
 
-		<!-- 加入sentienl -->
+		加入sentienl
 		<dependency>
 			<groupId>com.yonyou.cloud.middleware</groupId>
 			<artifactId>sentinel-public</artifactId>
-			<!-- <scope>provided</scope> -->
-			<version>5.1.1-SNAPSHOT</version>
+			<scope>provided</scope>
+			<version>5.1.1-RELEASE</version>
 			<classifier>sources</classifier>
 		</dependency>
 		
-		<!-- 加入yyeye -->
+		加入yyeye
 		<dependency>
 			<groupId>com.yonyou.cloud.middleware</groupId>
 			<artifactId>yyeye-public</artifactId>
-			<!-- <scope>provided</scope> -->
-			<version>5.1.1-SNAPSHOT</version>
+			<scope>provided</scope>
+			<version>5.1.1-RELEASE</version>
 			<classifier>sources</classifier>
 		</dependency>
 		
 		<dependency>
 			<groupId>com.yonyou.cloud.middleware</groupId>
 			<artifactId>ms-monitor-public</artifactId>
-			<!-- <scope>provided</scope> -->
-			<version>5.1.1-SNAPSHOT</version>
+			<scope>provided</scope>
+			<version>5.1.1-RELEASE</version>
 			<classifier>sources</classifier>
 		</dependency>
 
-		<!-- 加入嵌入版配置中心 -->
+		加入嵌入版配置中心
 		<dependency>
 			<groupId>com.yonyou.cloud.middleware</groupId>
 			<artifactId>proteus-embed-sdk-public</artifactId>
-			<version>5.1.1-SNAPSHOT</version>
+			<version>5.1.1-RELEASE</version>
 			<classifier>sources</classifier>
 		</dependency>
 
 		<dependency>
 			<groupId>com.yonyou.cloud.middleware</groupId>
 			<artifactId>iris-public</artifactId>
-			<version>5.1.1-SNAPSHOT</version>
+			<version>5.1.1-RELEASE</version>
 			<classifier>sources</classifier>
 		</dependency>
 		
 		<dependency>
 			<groupId>com.yonyou.cloud.middleware</groupId>
 			<artifactId>helix-public</artifactId>
-			<version>5.1.1-SNAPSHOT</version>
+			<version>5.1.1-RELEASE</version>
 			<classifier>sources</classifier>
 		</dependency>
 		
 		<dependency>
 			<groupId>com.yonyou.cloud.middleware</groupId>
 			<artifactId>helix-plugin-public</artifactId>
-			<version>5.1.1-SNAPSHOT</version>
+			<version>5.1.1-RELEASE</version>
 			<classifier>sources</classifier>
 		</dependency>
-	</dependencies>
+	</dependencies> -->
 	
 	<build>
-	<!-- <finalName>middleware-5.1.1-SNAPSHOT-sources</finalName> -->
+	<!-- <finalName>middleware-5.1.1-RELEASE-sources</finalName> -->
 		<plugins>
 		
 		<plugin>
@@ -98,7 +98,7 @@
 				<execution>
 					<configuration>
 						<appendAssemblyId>false</appendAssemblyId>
-						<finalName>middleware-5.1.1-SNAPSHOT-sources</finalName>
+						<finalName>middleware-5.1.1-RELEASE-sources</finalName>
 						<descriptors>
 							<descriptor>src/main/java/assembly/assembly.xml</descriptor>
 						</descriptors>
