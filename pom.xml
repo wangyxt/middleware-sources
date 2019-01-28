@@ -87,8 +87,28 @@
 	</dependencies>
 	
 	<build>
-	<finalName>middleware-5.1.1-SNAPSHOT-sources</finalName>
+	<!-- <finalName>middleware-5.1.1-SNAPSHOT-sources</finalName> -->
 		<plugins>
+		
+		<!-- <plugin>
+	        <artifactId>maven-install-plugin</artifactId>
+	        <version>3.0.0-M1</version>
+	        <executions>
+	          <execution>
+	            <id>default-install</id>
+	            <phase>install</phase>
+	            <goals>
+	              <goal>install</goal>
+	            </goals>
+	            <configuration>
+	            	<project>
+	            		<name>middleware-5.1.1-SNAPSHOT-sources</name>
+	            	</project>
+	            </configuration>
+	          </execution>
+	        </executions>
+	      </plugin> -->
+		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
